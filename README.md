@@ -1,3 +1,5 @@
+[go run main.go](https://github.com/da-maltsev/UDV_Go_test/blob/master/main.go)
+
 # UDV_Go_test
 Тестовое задание
 
