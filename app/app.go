@@ -27,7 +27,7 @@ func (a *App) Initialize() {
 }
 
 func (a *App) setRouters() {
-	a.Router.Path("/api/book").Methods("GET").Queries("page", "{page}", "size", "{size}").HandlerFunc(a.GetBooksPaginator)
+	a.Router.Path("/api/book/").Methods("GET").Queries("page", "{page}", "size", "{size}").HandlerFunc(a.GetBooksPaginator)
 	a.Get("/api/book", a.GetBook)
 	a.Get("/api/book/{id}/items", a.GetItems)
 }
