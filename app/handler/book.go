@@ -2,20 +2,14 @@ package handler
 
 import (
 	"github.com/da-maltsev/UDV_Go_test/model"
-	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	"net/http"
-	"strconv"
 )
 
 func GetBooksPaginator(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-
-	page, _ := strconv.Atoi(vars["page"])
-	size, _ := strconv.Atoi(vars["size"])
 
 	books := []model.Book{}
-	response := db.Offset(page).Limit(size).Find(&books)
+	response := db.Scopes(paginate(r)).Find(&books)
 	if response == nil {
 		return
 	}
