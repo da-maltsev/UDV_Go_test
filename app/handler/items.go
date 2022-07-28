@@ -13,9 +13,8 @@ func GetItems(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
 	bookId, _ := strconv.Atoi(vars["id"])
-
-	item := []model.Item{}
-	items := db.Where("book_id = ?", bookId).Find(&item)
+	items := []model.Item{}
+	db.Where("book_id = ?", bookId).Find(&items).Scan(&items)
 	if items == nil {
 		return
 	}

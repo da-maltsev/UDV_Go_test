@@ -9,11 +9,11 @@ import (
 func GetBooksPaginator(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 
 	books := []model.Book{}
-	response := db.Scopes(paginate(r)).Find(&books)
+	response := db.Scopes(paginate(r)).Find(&books).Scan(&books)
 	if response == nil {
 		return
 	}
-	respondJSON(w, http.StatusOK, response)
+	respondJSON(w, http.StatusOK, books)
 
 }
 
