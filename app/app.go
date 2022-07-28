@@ -28,7 +28,7 @@ func (a *App) Initialize() {
 
 func (a *App) setRouters() {
 	a.Get("/api/book", a.GetBook)
-	//a.Get("/api/book/xxx", a.GetEmployee)
+	a.Get("/api/book/{id}/items", a.GetItems)
 }
 
 func (a *App) Get(path string, f func(w http.ResponseWriter, r *http.Request)) {
@@ -37,6 +37,10 @@ func (a *App) Get(path string, f func(w http.ResponseWriter, r *http.Request)) {
 
 func (a *App) GetBook(w http.ResponseWriter, r *http.Request) {
 	handler.GetBook(a.DB, w, r)
+}
+
+func (a *App) GetItems(w http.ResponseWriter, r *http.Request) {
+	handler.GetItems(a.DB, w, r)
 }
 
 func (a *App) Run(host string) {

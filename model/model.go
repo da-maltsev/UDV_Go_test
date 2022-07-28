@@ -14,7 +14,7 @@ type Publisher struct {
 }
 
 type Book struct {
-	gorm.Model
+	Id          int       `gorm:"primary_key, AUTO_INCREMENT" json:"id"`
 	Title       string    `json:"title"`
 	Description string    `json:"description"`
 	Authors     string    `json:"authors"`
@@ -24,7 +24,7 @@ type Book struct {
 }
 
 type Item struct {
-	gorm.Model
+	Id       int `gorm:"primary_key, AUTO_INCREMENT" json:"id"`
 	Quantity int `json:"quantity"`
 	BookID   int `json:"book_id"`
 }
