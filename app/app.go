@@ -27,6 +27,7 @@ func (a *App) Initialize() {
 }
 
 func (a *App) setRouters() {
+	a.Router.Path("/api/book").Methods("GET").Queries("page", "{page}", "size", "{size}").HandlerFunc(a.GetBooksPaginator)
 	a.Get("/api/book", a.GetBook)
 	a.Get("/api/book/{id}/items", a.GetItems)
 }
@@ -37,6 +38,10 @@ func (a *App) Get(path string, f func(w http.ResponseWriter, r *http.Request)) {
 
 func (a *App) GetBook(w http.ResponseWriter, r *http.Request) {
 	handler.GetBook(a.DB, w, r)
+}
+
+func (a *App) GetBooksPaginator(w http.ResponseWriter, r *http.Request) {
+	handler.GetBooksPaginator(a.DB, w, r)
 }
 
 func (a *App) GetItems(w http.ResponseWriter, r *http.Request) {
