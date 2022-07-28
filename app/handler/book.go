@@ -15,7 +15,6 @@ func GetBooksPaginator(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	size, _ := strconv.Atoi(vars["size"])
 
 	books := []model.Book{}
-	//response := db.Scopes(paginate(r)).Find(&books)
 	response := db.Offset(page).Limit(size).Find(&books)
 	if response == nil {
 		return
