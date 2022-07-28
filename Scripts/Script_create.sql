@@ -1,7 +1,7 @@
 CREATE table if not exists Publishers (
 ID serial primary key,
 Title varchar(50) not null,
-Adress varchar(100) not null,
+Address varchar(100) not null,
 Contacts varchar(50) not null
 );
 CREATE table if not exists Books (
@@ -35,5 +35,5 @@ Item_id integer not null references Items(ID),
 Available boolean not null,
 Customer_id integer references Customers(ID),
 Given_at date,
-Recieved_at date
+Received_at date
 );

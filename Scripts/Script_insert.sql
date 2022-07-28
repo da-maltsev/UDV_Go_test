@@ -1,5 +1,5 @@
 insert into
-    Publishers (Title, Adress, Contacts)
+    Publishers (Title, Address, Contacts)
 values
     ('First Publisher', 'Petrovsko 12, 541', 'www.leningrad.ru'),
     ('Second Publisher', 'Tolstogo 42, 987', '89321231212')
@@ -47,7 +47,7 @@ values
     ('Julia Roberts', 'whynot@gmail.com')
 ;
 insert into
-    Status (Item_id, Available, Customer_id, Given_at, Recieved_at)
+    Status (Item_id, Available, Customer_id, Given_at, Received_at)
 values
     (1, true, 2, '2020-01-22', '2022-02-01'),
     (2, false, 2, '2020-01-22', '2022-02-01'),
