@@ -27,8 +27,13 @@ func paginate(r *http.Request) func(db *gorm.DB) *gorm.DB {
 	return func(db *gorm.DB) *gorm.DB {
 		q := r.URL.Query()
 		page, _ := strconv.Atoi(q.Get("page"))
-		if page == 0 {
+		switch {
+		case page == 0:
 			page = 1
+
+			// Just for test purpose
+		case page > 5:
+			page = 5
 		}
 		pageSize, _ := strconv.Atoi(q.Get("size"))
 		switch {
