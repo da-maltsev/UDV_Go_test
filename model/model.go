@@ -20,6 +20,7 @@ type Book struct {
 	Authors     string    `json:"authors"`
 	PublishYear time.Time `json:"publishYear"`
 	PublisherID int       `json:"publisher_id"`
+	Publisher   Publisher
 	Edition     string    `json:"edition"`
 }
 
@@ -27,6 +28,7 @@ type Item struct {
 	Id       int `gorm:"primary_key, AUTO_INCREMENT" json:"id"`
 	Quantity int `json:"quantity"`
 	BookID   int `json:"book_id"`
+	Book     Book
 }
 
 type Position struct {
@@ -34,6 +36,7 @@ type Position struct {
 	Room   string `json:"room"`
 	Shelf  string `json:"shelf"`
 	ItemID int    `json:"item_id"`
+	Item   Item
 }
 
 type Customer struct {
@@ -47,6 +50,7 @@ type Status struct {
 	ItemID     int       `json:"item_id"`
 	Available  bool      `json:"available"`
 	CustomerID int       `json:"customer_id"`
+	Customer   Customer
 	GivenAt    time.Time `json:"given_at"`
 	ReceivedAt time.Time `json:"received_at"`
 }
