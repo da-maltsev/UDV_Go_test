@@ -28,7 +28,7 @@ func GetBook(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 
 func getBookOr404(db *gorm.DB, w http.ResponseWriter, r *http.Request) *model.Book {
 	book := model.Book{}
-	if err := db.First(&book, model.Book{}).Error; err != nil {
+	if err := db.First(&book, model.Book{}).Related(&book.Publisher).Error; err != nil {
 		respondError(w, http.StatusNotFound, err.Error())
 		return nil
 	}
