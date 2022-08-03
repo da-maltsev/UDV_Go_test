@@ -18,7 +18,7 @@ type Book struct {
 	Title       string    `json:"title"`
 	Description string    `json:"description"`
 	Authors     string    `json:"authors"`
-	PublishYear time.Time `json:"publishYear"`
+	PublishYear time.Time `json:"publish_year"`
 	PublisherID int       `json:"publisher_id"`
 	Publisher   Publisher `json:"publisher"`
 	Edition     string    `json:"edition"`

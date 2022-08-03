@@ -16,7 +16,10 @@ type App struct {
 
 func (a *App) Initialize() {
 
-	db, err := gorm.Open("postgres", "host=localhost port=5432  user=postgres password=postgres dbname=booksdb ")
+	db, err := gorm.Open(
+		"postgres",
+		"host=localhost port=5432 user=postgres password=postgres dbname=booksdb TimeZone=Asia/Shanghai",
+	)
 	if err != nil {
 		log.Fatalf("Could not connect database: %s", err)
 	}

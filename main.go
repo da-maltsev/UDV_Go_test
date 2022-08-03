@@ -8,5 +8,5 @@ func main() {
 
 	app := &app.App{}
 	app.Initialize()
-	app.Run(":3105")
+	app.Run(":4220")
 }
