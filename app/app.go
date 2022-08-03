@@ -27,13 +27,17 @@ func (a *App) Initialize() {
 }
 
 func (a *App) setRouters() {
-	a.Router.Path("/api/book/").Methods("GET").Queries("page", "{page}", "size", "{size}").HandlerFunc(a.GetBooksPaginator)
+	a.GetQueries("/api/book/", a.GetBooksPaginator, "page", "{page}", "size", "{size}")
 	a.Get("/api/book", a.GetBook)
 	a.Get("/api/book/{id}/items", a.GetItems)
 }
 
 func (a *App) Get(path string, f func(w http.ResponseWriter, r *http.Request)) {
 	a.Router.HandleFunc(path, f).Methods("GET")
+}
+
+func (a *App) GetQueries(path string, f func(w http.ResponseWriter, r *http.Request), pairs ...string) {
+	a.Router.Path(path).Queries(pairs...).HandlerFunc(f).Methods("GET")
 }
 
 func (a *App) GetBook(w http.ResponseWriter, r *http.Request) {
